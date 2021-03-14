@@ -17,20 +17,20 @@ public class BpSpringApplication {
 	}
 
 	//curl -H "Content-Type: text/plain" localhost:8080/toUpperCase -d "param"
-	@Bean
-	public Function<String,String> toUpperCase() {
-		return  (value) -> new StringBuilder(value).toString().toUpperCase();
-	}
-
-	//curl -H "Content-Type: text/plain" localhost:8080/getMessage
-	@Bean
-	public Supplier<String> getMessage(){
-		return () -> "test";
-	}
-
-	//curl -H "Content-Type: text/plain" localhost:8080/toUpperCase -d "this is a test"
-	@Bean
-	public Consumer<String> writeMessage(){return (value) -> System.out.println(value);}
+//	@Bean
+//	public Function<String,String> toUpperCase() {
+//		return  (value) -> new StringBuilder(value).toString().toUpperCase();
+//	}
+//
+//	//curl -H "Content-Type: text/plain" localhost:8080/getMessage
+//	@Bean
+//	public Supplier<String> getMessage(){
+//		return () -> "test";
+//	}
+//
+//	//curl -H "Content-Type: text/plain" localhost:8080/toUpperCase -d "this is a test"
+//	@Bean
+//	public Consumer<String> writeMessage(){return (value) -> System.out.println(value);}
 
 	//curl -H "Content-Type: text/plain" localhost:8080/getEmployeesTest
 	@Bean

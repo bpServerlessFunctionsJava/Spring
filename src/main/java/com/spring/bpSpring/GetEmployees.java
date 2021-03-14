@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class GetEmployees implements Supplier<EmployeeData> {
+public class GetEmployees {//implements Supplier<EmployeeData> {
 
-    @Override
+   /* @Override
     public EmployeeData get() {
         EmployeeData employeeData
                 = new EmployeeData();
         employeeData.setEmployees(this.employees());
 
         return employeeData;
-    }
+    }*/
 
     //Consider getting Data form Database
     public List<Employee> employees() {
