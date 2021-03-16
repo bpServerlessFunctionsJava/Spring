@@ -1,12 +1,19 @@
 package com.spring.bpSpring;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int empId;
     private String empname;
     private String email;
+    @Transient
     private List<String> list;
+    @ManyToOne
+    @JoinColumn(name = "supervisorId")
     private Employee supervisor;
 
     public Employee() {

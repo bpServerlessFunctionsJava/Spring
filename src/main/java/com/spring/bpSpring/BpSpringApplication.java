@@ -1,5 +1,6 @@
 package com.spring.bpSpring;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,9 @@ public class BpSpringApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BpSpringApplication.class, args);
 	}
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
 
 	//curl -H "Content-Type: text/plain" localhost:8080/toUpperCase -d "param"
 //	@Bean
@@ -34,8 +38,11 @@ public class BpSpringApplication {
 
 	//curl -H "Content-Type: text/plain" localhost:8080/getEmployeesTest
 	@Bean
-	public Supplier<List<Employee>> getEmployeesTest(){
-		return () -> new GetEmployees().employees();
+	public Supplier<Iterable<Employee>> getEmployeesTest(){
+		return () -> {
+			employeeRepository.saveAll(new GetEmployees().employees());
+			return employeeRepository.findAll();
+		};
 	}
 
 }
