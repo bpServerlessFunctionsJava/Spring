@@ -1,17 +1,14 @@
 package com.spring.bpSpring;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int empId;
-    private String empname;
+    private int id;
+    private String name;
     private String email;
-    @Transient
-    private List<String> list;
     @ManyToOne
     @JoinColumn(name = "supervisorId")
     private Employee supervisor;
@@ -19,39 +16,27 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int empId, String empname, String email, Employee supervisor, List<String> list) {
-        this.empId = empId;
-        this.empname = empname;
+    public Employee(int id, String name, String email, Employee supervisor) {
+        this.id = id;
+        this.name = name;
         this.email = email;
         this.supervisor = supervisor;
-        this.list = list;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "empId='" + empId + '\'' +
-                ", empname='" + empname + '\'' +
-                ", email='" + email + '\'' +
-                ", list='" + list + '\'' +
-                ", supervisor='" + supervisor + '\'' +
-                '}';
+    public int getId() {
+        return id;
     }
 
-    public int getEmpId() {
-        return empId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setEmpId(int empId) {
-        this.empId = empId;
+    public String getName() {
+        return name;
     }
 
-    public String getEmpname() {
-        return empname;
-    }
-
-    public void setEmpname(String empname) {
-        this.empname = empname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -60,14 +45,6 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<String> getList() {
-        return list;
-    }
-
-    public void setList(List<String> list) {
-        this.list = list;
     }
 
     public Employee getSupervisor() {
