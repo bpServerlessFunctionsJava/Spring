@@ -17,13 +17,10 @@ public class BpSpringApplication {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	@Autowired EmployeeService employeeService;
-
 	//curl -H "Content-Type: text/plain" localhost:8080/getEmployees
 	@Bean
 	public Supplier<Iterable<Employee>> getEmployees(){
 		return () -> {
-			employeeRepository.saveAll(new EmployeeService().employees());
 			return employeeRepository.findAll();
 		};
 	}

@@ -2,7 +2,7 @@ package com.spring.bpSpring;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "EmployeeSpring")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
