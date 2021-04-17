@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 @SpringBootApplication
 public class BpSpringApplication {
@@ -19,8 +19,8 @@ public class BpSpringApplication {
 
 	//curl -H "Content-Type: text/plain" localhost:8080/getEmployees
 	@Bean
-	public Supplier<Iterable<Employee>> getEmployees(){
-		return () -> {
+	public Function<String ,Iterable<Employee>> getEmployees(){
+		return (input) -> {
 			return employeeRepository.findAll();
 		};
 	}
