@@ -19,7 +19,7 @@ public class BpSpringApplication {
 
 	//curl -H "Content-Type: text/plain" localhost:8080/getEmployees
 	@Bean
-	public Function<String ,Iterable<Employee>> getEmployees(){
+	public Function<Input ,Iterable<Employee>> getEmployees(){
 		return (input) -> {
 			return employeeRepository.findAll();
 		};
